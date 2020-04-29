@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 055eae6a3e9cd46499e4100a34066e9e, type: 3}
+  m_Name: World Piece Data 4
+  m_EditorClassIdentifier: 
+  allowedPieces:
+  - {fileID: 8324445369642424940, guid: 9696721132b8ad448ab228b223974f46, type: 3}
+  - {fileID: 124919923183458701, guid: 6fc3820fc77945f48bce7bf563a739d2, type: 3}
+  - {fileID: 3453393571550931406, guid: 6c562cd33f91aeb4cbf21524e8d4645b, type: 3}
+  piecePosition: {x: 0, y: 0, z: 80}
+  pieceName: 4
