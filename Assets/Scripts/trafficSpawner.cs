@@ -14,7 +14,8 @@ public class trafficSpawner : MonoBehaviour
     int tempRandom, lastRandom;
     public int delayTime;
     // random position
-    Vector3 currentPos, spawnPos;
+    Vector3 currentPos, spawnPos, offset;
+    int gap = 0;
 
     private void Start() 
     {
@@ -22,16 +23,18 @@ public class trafficSpawner : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         FindUniqueNumber();
         RandomPosition();
+        StartCoroutine(Delay());
     }
 
     private void Update()
     {
         playerPos = player.transform.position;
-
-        if (Input.GetKeyDown(KeyCode.F))
-        StartCoroutine(SpawnTraffic());
-
         currentPos = playerPos;
+        // For debuging only
+        if (Input.GetKeyDown(KeyCode.F))
+        SpawnTraffic();
+
+        
         
     }
     int FindUniqueNumber()
@@ -56,18 +59,15 @@ public class trafficSpawner : MonoBehaviour
         return spawnPos;
     }
 
-    public IEnumerator SpawnTraffic()
+    public void SpawnTraffic()
     {   
-        
+        playerPos = player.transform.position;
+        currentPos = playerPos;
     
         if (hasFoundUniqueNumber)
         {
-            int gap = 0;
-            for (int i = 0; i < 50; i++)
-            {
-                gap += 20;
-                Vector3 offset  = new Vector3 (0,0,gap);
-                Debug.Log("works here");
+            
+            
                 switch (lastRandom)
                 {
                     case 0:
@@ -101,11 +101,26 @@ public class trafficSpawner : MonoBehaviour
                     break;
                 }  
                 FindUniqueNumber();
-            }
-            yield return new WaitForSeconds(delayTime);
+            
+           
             //StartCoroutine(SpawnTraffic());
                 
         }
         
+    }
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(delayTime);
+        gap = 0;
+        for (int i = 0; i < 20; i++)
+            {
+                gap += Random.Range(15,25);
+                //if (i >= 19)
+                //gap = 0;
+                offset  = new Vector3 (0,0,gap);
+                Debug.Log("works here");
+                SpawnTraffic();
+                
+            }
     }
 }
