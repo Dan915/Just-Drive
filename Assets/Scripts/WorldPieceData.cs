@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "World Piece Data 0", menuName = "World Piece", order = 1)]
+[CreateAssetMenu(fileName = "World Piece Data 0", menuName = "Custom/World Piece", order = 1)]
 public class WorldPieceData : ScriptableObject
 {
     public enum trackName
