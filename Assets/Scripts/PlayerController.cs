@@ -98,7 +98,20 @@ public class PlayerController : MonoBehaviour
        
        TurnCar();
   
-            
+        if (Input.deviceOrientation == DeviceOrientation.LandscapeLeft || Input.deviceOrientation == DeviceOrientation.LandscapeRight)  
+        {
+            CM_camera[0].SetActive(false);
+            CM_camera[1].SetActive (true);
+            CM_camera[2].SetActive (true);
+            myCam.orthographic = true;
+        }
+        else 
+        {
+            CM_camera[0].SetActive  (true);
+            CM_camera[1].SetActive (true);
+            CM_camera[2].SetActive (true);
+            myCam.orthographic = false;
+        }
        if (Input.GetKeyUp(KeyCode.P))
        {
            

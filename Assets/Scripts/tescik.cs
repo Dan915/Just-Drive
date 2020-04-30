@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class tescik : MonoBehaviour
 {
-
+    public bool isLandscape;
     
     // Start is called before the first frame update
     void Start()
@@ -15,6 +15,8 @@ public class tescik : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isLandscape)
+        Screen.orientation = ScreenOrientation.Landscape;
        if (Input.GetKeyDown(KeyCode.Q))
         QualitySettings.SetQualityLevel(3,true);
         else if (Input.GetKeyDown(KeyCode.E))
