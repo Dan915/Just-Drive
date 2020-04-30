@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1790169124054323738}
   - component: {fileID: 1790169124054323739}
+  - component: {fileID: 1193895734}
   m_Layer: 0
   m_Name: ObjectPooler
   m_TagString: Untagged
@@ -38,12 +39,33 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1790169124054323736}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0756d19e618e3e4e9c98b6d14b9a5e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pools:
-  - tag: WorldPieces
+  - tag: Coins
+    prefab: {fileID: 8888520040366151206, guid: 51403cf471117e0459ef119996b1cd41,
+      type: 3}
+    size: 200
+  - tag: Obstacles
     prefab: {fileID: 0}
-    size: 5
+    size: 20
+--- !u!114 &1193895734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790169124054323736}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6eefa2999cac93419bd5c4be575fc3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnOffsets:
+  - {x: -5, y: 0, z: 100}
+  - {x: 0, y: 0, z: 100}
+  - {x: 5, y: 0, z: 100}
+  - {x: 10, y: 0, z: 100}
