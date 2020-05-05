@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2262ad5b116f8744f86a577fada36fb0, type: 3}
-  m_Name: Magnet
+  m_Name: Shield
   m_EditorClassIdentifier: 
-  PowerName: 0
-  description: All the coins are being magnetized towards you
-  upgrade1Description: Increase the strenght of magnet
-  upgrade2Description: Extend duration time of the magnet
-  upgrade3Description: Increase the range of magnet
+  PowerName: 1
+  description: Nothing can destory you while the shield is active
+  upgrade1Description: Increase strength of shield to make it last longer
+  upgrade2Description: Extend duration time of the shield
+  upgrade3Description: 
   artwork: {fileID: 0}
-  prefab: {fileID: 1969410343205220774, guid: 07aa0f35ada09504dbc8045d6bdafbfb, type: 3}
+  prefab: {fileID: 9197150454689662534, guid: 692db339c2c945c468f6c2f6ae42e32a, type: 3}
   duration: 5
-  strenght: 5
-  Range: 15
+  strenght: 1
+  Range: 0
   upgrade1Price: 500
   upgrade2Price: 500
-  upgrade3Price: 500
+  upgrade3Price: 0

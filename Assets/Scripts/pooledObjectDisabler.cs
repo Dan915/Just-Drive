@@ -17,5 +17,9 @@ public class pooledObjectDisabler : MonoBehaviour
             _object.gameObject.SetActive(false);
             trafficSpawner.GetComponent<trafficSpawner>().SpawnTraffic();
         }
+
+        if (_object.tag == "PowerUp")
+        _object.gameObject.SetActive(false);
+        
     }
 }

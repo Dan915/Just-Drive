@@ -16,11 +16,12 @@ public class tescik : MonoBehaviour
     void Update()
     {
         if (isLandscape)
-        Screen.orientation = ScreenOrientation.Landscape;
-       if (Input.GetKeyDown(KeyCode.Q))
-        QualitySettings.SetQualityLevel(3,true);
+            Screen.orientation = ScreenOrientation.Landscape;
+        // change game graphics settings 
+        if (Input.GetKeyDown(KeyCode.Q))
+            QualitySettings.SetQualityLevel(3,true);
         else if (Input.GetKeyDown(KeyCode.E))
-        QualitySettings.SetQualityLevel(1,true);
+            QualitySettings.SetQualityLevel(1,true);
         
         
         

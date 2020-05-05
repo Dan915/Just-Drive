@@ -9,16 +9,26 @@ public class CoinScript : MonoBehaviour
     [Range(50f,100f)]
     public float speed = 1f;
     public int points = 50;
+    [SerializeField] PowerUpsData magnet;
     GameObject worldGenerator;
+    GameObject player;
+    public bool magnetActivated;
     
     void Start()
     {
         worldGenerator = GameObject.FindGameObjectWithTag("WorldGenerator");
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (player.GetComponent<PlayerController>().isMagnetActivated && Vector3.Distance(transform.position, player.transform.position) <= magnet.Range)
+        {
+            Debug.Log("moving toward the player");
+            float step = magnet.strenght * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, step);
+        }
         gameObject.transform.Rotate(0,speed * Time.deltaTime,0,Space.World);
         transform.position = new Vector3(transform.position.x,(Mathf.Sin(Time.time) * 0.25f) + 1,transform.position.z);
     }

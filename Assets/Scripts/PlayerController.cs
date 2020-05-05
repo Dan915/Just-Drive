@@ -26,6 +26,20 @@ public class PlayerController : MonoBehaviour
   private Vector2 touchStartPosition, touchEndPosition;
   GameObject worldGenerator;
   public bool crashed;
+  // Power Ups Section
+  [Space] [Header("Power Ups")] 
+  public bool isShieldActivated;
+  public bool isMagnetActivated;
+  [Tooltip("Attach particle system with cool shader to show that the power up is activated")] 
+  [Header(" Cool Effects")]
+  [SerializeField] GameObject shieldEffect;
+  [SerializeField] GameObject magnetEffect;
+
+
+  [Tooltip("Attach all the power ups that are available")]
+  public PowerUpsData[] powerUps;
+  public int shieldLife;
+  public int magnetStrength;
 
     // Start is called before the first frame update
     void Start()
@@ -97,7 +111,7 @@ public class PlayerController : MonoBehaviour
 }
        
        TurnCar();
-  
+        // stwiching cameras based on device orientation
         if (Input.deviceOrientation == DeviceOrientation.LandscapeLeft || Input.deviceOrientation == DeviceOrientation.LandscapeRight)  
         {
             CM_camera[0].SetActive(false);
@@ -112,8 +126,10 @@ public class PlayerController : MonoBehaviour
             CM_camera[2].SetActive (true);
             myCam.orthographic = false;
         }
-       if (Input.GetKeyUp(KeyCode.P))
-       {
+        // for debugging 
+        // Switvhing cameras
+        if (Input.GetKeyUp(KeyCode.P))
+        {
            
             if (cameraSwitch >= 3)
             cameraSwitch = 0;
@@ -144,7 +160,7 @@ public class PlayerController : MonoBehaviour
                break;
            }
 
-       }
+        }
     }
     void ChangeLane()
     {
@@ -259,6 +275,34 @@ public class PlayerController : MonoBehaviour
        StartCoroutine(delay());
     }
  
+    public IEnumerator ActivateShield()
+    {
+        shieldLife = powerUps[0].strenght;
+
+        isShieldActivated = true;
+        //shieldEffect.SetActive(true);
+
+        // if player crashed too many times shiled will deactivate
+        if (shieldLife <= 0)
+        {
+            shieldEffect.SetActive(false);
+            isShieldActivated = false;
+        }
+
+        yield return new WaitForSeconds(powerUps[0].duration);
+        //shieldEffect.SetActive(false);
+        isShieldActivated = false;
+        
+    }
+    public IEnumerator ActivateMagnet()
+    {
+        isMagnetActivated = true;
+        //magnetEffect.SetActive(true);
+        yield return new WaitForSeconds(powerUps[1].duration);
+        isMagnetActivated = false;
+        //magnetEffect.SetActive(false);
+    }
+
     IEnumerator delay()
     {
         yield return new WaitForSeconds(rotationTime);

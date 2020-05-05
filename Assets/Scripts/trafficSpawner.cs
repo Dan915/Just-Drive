@@ -16,6 +16,7 @@ public class trafficSpawner : MonoBehaviour
     // random position
     Vector3 currentPos, spawnPos, offset;
     int gap = 0;
+    [SerializeField] int carsToSpawn;
 
     private void Start() 
     {
@@ -112,7 +113,7 @@ public class trafficSpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(delayTime);
         gap = 0;
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < carsToSpawn; i++)
             {
                 gap += Random.Range(15,25);
                 //if (i >= 19)

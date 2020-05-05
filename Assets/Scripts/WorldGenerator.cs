@@ -21,9 +21,13 @@ public class WorldGenerator : MonoBehaviour
     public Vector3 spawnPos;
     [Space]
     [Tooltip("Every 10th piece created difficulty will increase. More obstacles, faster pace")] public int worldPiecesCreated = 0;
-    [Tooltip("World movement speed")][Range(5,100)] public float playerSpeed;
-    public float _currentSpeed = 5;
-    public float _targetSpeed = 5;  
+    [Tooltip("World movement speed")][Range(15,100)] public float playerSpeed;
+    GameObject player;
+    Vector3 playerPos;
+    public float _currentSpeed;
+    public float _targetSpeed;  
+    [Space(10)]
+    public PowerUpsData[] PowerUps;
 
     void Awake() 
     {
@@ -32,7 +36,7 @@ public class WorldGenerator : MonoBehaviour
 
     void Start()
     {
-
+        player = GameObject.FindGameObjectWithTag("Player");
         for (int i = 0; i < initialPiecesToGenerate; i++)
         {
             PickAndGeneratePiece();
@@ -166,10 +170,22 @@ public class WorldGenerator : MonoBehaviour
                _targetSpeed = _currentSpeed + 5;
                // increase motion blur in camera post production
             }
+            SpawnPowerUp();
         }
         playerSpeed = Mathf.Lerp(_currentSpeed, _targetSpeed, Time.deltaTime*2);
+       
 
         // spawn more Obstacles
+    }
+
+    public void SpawnPowerUp()
+    { 
+        int index = Random.Range(0, PowerUps.Length);
+        GameObject RandomPowerUp = PowerUps[index].prefab;
+        Debug.Log("power up to spawn " + index);
+        playerPos = player.transform.position;
+        Instantiate(RandomPowerUp, new Vector3( Random.Range(-5, 10), playerPos.y, playerPos.z + 50), Quaternion.identity);
+        Debug.Log("Spawn that power up");
     }
 
 }
