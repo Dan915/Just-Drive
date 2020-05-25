@@ -8,6 +8,8 @@ TagManager:
   - WorldGenerator
   - Collectable
   - Obstacle
+  - Ignore
+  - Water
   layers:
   - Default
   - TransparentFX

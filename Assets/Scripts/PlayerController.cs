@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
   [Space][SerializeField][Header("Wheels Settings")] Vector3[] wheelsTurnAngle;
 
   [SerializeField] GameObject[] Wheels;
+  public GameObject car;
   private Touch theTouch;
   private Vector2 touchStartPosition, touchEndPosition;
   GameObject worldGenerator;
@@ -32,8 +33,8 @@ public class PlayerController : MonoBehaviour
   public bool isMagnetActivated;
   [Tooltip("Attach particle system with cool shader to show that the power up is activated")] 
   [Header(" Cool Effects")]
-  [SerializeField] GameObject shieldEffect;
-  [SerializeField] GameObject magnetEffect;
+  [SerializeField] public GameObject shieldEffect;
+  [SerializeField] public GameObject magnetEffect;
 
 
   [Tooltip("Attach all the power ups that are available")]
@@ -66,6 +67,13 @@ public class PlayerController : MonoBehaviour
         
         Position.y = transform.position.y;
         Position.z = transform.position.z;
+
+        // if player crashed too many times shiled will deactivate
+        if (shieldLife <= 0)
+        {
+            shieldEffect.SetActive(false);
+            isShieldActivated = false;
+        }
         
 
         // Touch Swipe Input
@@ -280,17 +288,10 @@ public class PlayerController : MonoBehaviour
         shieldLife = powerUps[0].strenght;
 
         isShieldActivated = true;
-        //shieldEffect.SetActive(true);
-
-        // if player crashed too many times shiled will deactivate
-        if (shieldLife <= 0)
-        {
-            shieldEffect.SetActive(false);
-            isShieldActivated = false;
-        }
+        shieldEffect.SetActive(true);
 
         yield return new WaitForSeconds(powerUps[0].duration);
-        //shieldEffect.SetActive(false);
+        shieldEffect.SetActive(false);
         isShieldActivated = false;
         
     }

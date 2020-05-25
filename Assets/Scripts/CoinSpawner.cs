@@ -16,18 +16,19 @@ public class CoinSpawner : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         objectPooler = ObjectPooler.Instance;
+        StartCoroutine(SpawnCoins());
     }
 
     private void Update()
     {
         playerPos = player.transform.position;
         if (Input.GetKeyDown(KeyCode.Space))
-        SpawnCoins();
+        StartCoroutine(SpawnCoins());
     }
 
-    public void SpawnCoins()
+    public IEnumerator SpawnCoins()
     {   
-        
+        yield return new WaitForSeconds(Random.Range(1,8));
         while (!hasFoundUniqueNumber)
         {
             tempRandom = Random.Range(0,spawnOffsets.Length);
@@ -50,6 +51,7 @@ public class CoinSpawner : MonoBehaviour
             objectPooler.SpawnFromPool("Coins", spawnPos + offset, Quaternion.Euler(90,0,0));
         }
         hasFoundUniqueNumber = false;
+        StartCoroutine(SpawnCoins());
         
     }
 }

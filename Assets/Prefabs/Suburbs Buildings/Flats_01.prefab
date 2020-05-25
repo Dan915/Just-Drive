@@ -2574,6 +2574,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 308589278664878761, guid: 06a9858b4309bcf4cbe7ef09ae436c1d,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 308589278664878761, guid: 06a9858b4309bcf4cbe7ef09ae436c1d,
+        type: 3}
+      propertyPath: m_Range
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 308589278664878761, guid: 06a9858b4309bcf4cbe7ef09ae436c1d,
+        type: 3}
+      propertyPath: m_SpotAngle
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 308589278664878761, guid: 06a9858b4309bcf4cbe7ef09ae436c1d,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 107.56319
+      objectReference: {fileID: 0}
+    - target: {fileID: 3328143066305088510, guid: 06a9858b4309bcf4cbe7ef09ae436c1d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3328143066305088510, guid: 06a9858b4309bcf4cbe7ef09ae436c1d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.85
+      objectReference: {fileID: 0}
     - target: {fileID: 7828538088621986354, guid: 06a9858b4309bcf4cbe7ef09ae436c1d,
         type: 3}
       propertyPath: m_StaticEditorFlags

@@ -17,12 +17,13 @@ public class WorldGenerator : MonoBehaviour
     [Space]
     public WorldPieceData lastPiece;
     public GameObject nextPiece;
-    public Vector3 lastPos;
+    public Vector3 spawnOrigin;
     public Vector3 spawnPos;
     [Space]
     [Tooltip("Every 10th piece created difficulty will increase. More obstacles, faster pace")] public int worldPiecesCreated = 0;
     [Tooltip("World movement speed")][Range(15,100)] public float playerSpeed;
     GameObject player;
+    [SerializeField] GameObject background;
     Vector3 playerPos;
     public float _currentSpeed;
     public float _targetSpeed;  
@@ -45,11 +46,12 @@ public class WorldGenerator : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {        
+    {      
         // for debuging, creates world piece
         if (Input.GetKeyDown(KeyCode.T))
             PickAndGeneratePiece();
 
+        background.transform.position += Vector3.forward * Time.deltaTime * playerSpeed;
         // Increase game difficulty every time 10th world piece was created 
         // when increasing difficulty change camera to CM cam2 (ortographic) for a few seconds
         // add some pop up animaterd message that will inform player about increased difficulty
@@ -144,20 +146,16 @@ public class WorldGenerator : MonoBehaviour
     }
     public void PickAndGeneratePiece()
     {
-        
          PickNextPiece();
-         spawnPos += lastPiece.piecePosition;
-        //  foreach (var i in myAvailablePieces)
-        //  {
-        //      Debug.Log("item in list: " + i.name);
-        //  }
-        // spawnPos = lastPos;
-         // intantiate world piece with z offset. Offset depends on number of inital pieces created. Offset = world piece lenght * inital pieces 
-         Instantiate(nextPiece, new Vector3(- 10.5f,spawnPos.y,spawnPos.z + 80), Quaternion.identity);
-         worldPiecesCreated++;
-         //Debug.Log(nextPiece.transform.position);
-         ChangeLastPiece();
-
+        spawnPos = spawnPos + lastPiece.piecePosition;
+        // intantiate world piece with z offset. Offset depends on number of inital pieces created. Offset = world piece lenght * inital pieces 
+        Instantiate(nextPiece, new Vector3(- 10.5f,spawnPos.y,spawnPos.z + 80 + spawnOrigin.z), Quaternion.identity);
+        worldPiecesCreated++;
+        ChangeLastPiece();
+    }
+    public void UpdateSpawnOrigin(Vector3 originDelta)
+    {
+        spawnOrigin += originDelta;
     }
     public void IncreaseDifficulty()
     {
@@ -175,7 +173,7 @@ public class WorldGenerator : MonoBehaviour
         playerSpeed = Mathf.Lerp(_currentSpeed, _targetSpeed, Time.deltaTime*2);
        
 
-        // spawn more Obstacles
+        // spawn more Obstacles (optional)
     }
 
     public void SpawnPowerUp()
