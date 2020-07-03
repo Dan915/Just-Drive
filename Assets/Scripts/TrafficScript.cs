@@ -62,16 +62,18 @@ public class TrafficScript : MonoBehaviour
         {
             if (player.GetComponent<PlayerController>().isShieldActivated)
             {
+                player.GetComponent<PlayerController>().shieldLife--;
                 //this.GetComponent<BoxCollider>().enabled = false;
                 Physics.IgnoreCollision(player.GetComponent<Collider>(),GetComponent<Collider>());
-                player.GetComponent<PlayerController>().shieldLife--;
                 Debug.Log("Shield life remaining : " + player.GetComponent<PlayerController>().shieldLife);
                 Debug.Log("Explode the car");
+                this.gameObject.SetActive(false);
             // do explosion
             }
             else
             {
                 player.GetComponent<PlayerController>().crashed = true;
+                //this.GetComponent<BoxCollider>().enabled = true;
                 //player.GetComponent<PlayerController>().enabled = false;
                 Debug.Log("Game Over");
                 isDisabled = true;

@@ -6,7 +6,7 @@ public class trafficSpawner : MonoBehaviour
 {
     [SerializeField]
     ObjectPooler objectPooler;
-    GameObject player;
+    GameObject player, worldGenerator;
     Vector3 playerPos;
     [SerializeField]
     Vector3[] spawnOffsets;
@@ -22,9 +22,10 @@ public class trafficSpawner : MonoBehaviour
     {
         
         player = GameObject.FindGameObjectWithTag("Player");
+        worldGenerator = GameObject.FindGameObjectWithTag("WorldGenerator");
         FindUniqueNumber();
         RandomPosition();
-        StartCoroutine(Delay());
+        //StartCoroutine(Delay());
     }
 
     private void Update()
@@ -111,17 +112,20 @@ public class trafficSpawner : MonoBehaviour
     }
     IEnumerator Delay()
     {
-        yield return new WaitForSeconds(delayTime);
-        gap = 0;
-        for (int i = 0; i < carsToSpawn; i++)
-            {
-                gap += Random.Range(15,25);
-                //if (i >= 19)
-                //gap = 0;
-                offset  = new Vector3 (0,0,gap);
-                Debug.Log("works here");
-                SpawnTraffic();
-                
-            }
+        if (worldGenerator.GetComponent<WorldGenerator>().gameStarted == true)
+        {
+            yield return new WaitForSeconds(delayTime);
+            gap = 0;
+            for (int i = 0; i < carsToSpawn; i++)
+                {
+                    gap += Random.Range(15,25);
+                    //if (i >= 19)
+                    //gap = 0;
+                    offset  = new Vector3 (0,0,gap);
+                    Debug.Log("works here");
+                    SpawnTraffic();
+                    
+                }
+        }
     }
 }

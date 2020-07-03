@@ -40,7 +40,7 @@ public class CoinSpawner : MonoBehaviour
         }
         
         Vector3 currentPos = playerPos;
-        Vector3 spawnPos = playerPos + spawnOffsets[lastRandom];
+        Vector3 spawnPos = new Vector3(spawnOffsets[lastRandom].x, spawnOffsets[lastRandom].y, spawnOffsets[lastRandom].z + playerPos.z);
         int plus = 0;
         
         int poolSize = objectPooler.pools[0].size;

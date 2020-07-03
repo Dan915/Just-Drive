@@ -29,6 +29,7 @@ public class WorldGenerator : MonoBehaviour
     public float _targetSpeed;  
     [Space(10)]
     public PowerUpsData[] PowerUps;
+    public bool gameStarted = false;
 
     void Awake() 
     {
@@ -50,7 +51,7 @@ public class WorldGenerator : MonoBehaviour
         // for debuging, creates world piece
         if (Input.GetKeyDown(KeyCode.T))
             PickAndGeneratePiece();
-
+        if (player.GetComponent<PlayerController>().crashed != true)
         background.transform.position += Vector3.forward * Time.deltaTime * playerSpeed;
         // Increase game difficulty every time 10th world piece was created 
         // when increasing difficulty change camera to CM cam2 (ortographic) for a few seconds
