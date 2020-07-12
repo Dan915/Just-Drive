@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,8 +26,8 @@ public class WorldGenerator : MonoBehaviour
     GameObject player;
     [SerializeField] GameObject background;
     Vector3 playerPos;
-    public float _currentSpeed;
-    public float _targetSpeed;  
+    public float currentSpeed;
+    public float targetSpeed = 15;  
     [Space(10)]
     public PowerUpsData[] PowerUps;
     public bool gameStarted = false;
@@ -66,7 +67,7 @@ public class WorldGenerator : MonoBehaviour
         myAvailablePieces = new List<GameObject>();
         switch (lastPiece.pieceName)
         {
-            case WorldPieceData.trackName.Flats_01:
+            case WorldPieceData.TrackName.Flats_01:
 
                 foreach (GameObject item in myWorldPiecesData[0].allowedPieces)
                 {
@@ -75,7 +76,7 @@ public class WorldGenerator : MonoBehaviour
                 break;
 
 
-            case WorldPieceData.trackName.Flats_02:
+            case WorldPieceData.TrackName.Flats_02:
 
                 foreach (GameObject item in myWorldPiecesData[1].allowedPieces)
                 {
@@ -84,7 +85,7 @@ public class WorldGenerator : MonoBehaviour
                 break;
 
 
-            case WorldPieceData.trackName.Flats_03:
+            case WorldPieceData.TrackName.Flats_03:
 
                 foreach (GameObject item in myWorldPiecesData[2].allowedPieces)
                 {
@@ -93,7 +94,7 @@ public class WorldGenerator : MonoBehaviour
                 break;
                 
 
-            case WorldPieceData.trackName.Flats_04:
+            case WorldPieceData.TrackName.Flats_04:
 
                 foreach (GameObject item in myWorldPiecesData[3].allowedPieces)
                 {
@@ -102,7 +103,7 @@ public class WorldGenerator : MonoBehaviour
                 break;
 
 
-            case WorldPieceData.trackName.Flats_Corner_01:
+            case WorldPieceData.TrackName.Flats_Corner_01:
 
                 foreach (GameObject item in myWorldPiecesData[4].allowedPieces)
                 {
@@ -160,18 +161,18 @@ public class WorldGenerator : MonoBehaviour
     }
     public void IncreaseDifficulty()
     {
-        _currentSpeed = playerSpeed;
+        currentSpeed = playerSpeed;
         if (worldPiecesCreated >=10)
         {
             worldPiecesCreated = 0;
             if (playerSpeed < 100)
             {
-               _targetSpeed = _currentSpeed + 5;
+               targetSpeed = currentSpeed + 5;
                // increase motion blur in camera post production
             }
             SpawnPowerUp();
         }
-        playerSpeed = Mathf.Lerp(_currentSpeed, _targetSpeed, Time.deltaTime*2);
+        playerSpeed = Mathf.Lerp(currentSpeed, targetSpeed, Time.deltaTime*2);
        
 
         // spawn more Obstacles (optional)

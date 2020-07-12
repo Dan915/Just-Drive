@@ -110,10 +110,8 @@ public class trafficSpawner : MonoBehaviour
         }
         
     }
-    IEnumerator Delay()
+    public IEnumerator Delay()
     {
-        if (worldGenerator.GetComponent<WorldGenerator>().gameStarted == true)
-        {
             yield return new WaitForSeconds(delayTime);
             gap = 0;
             for (int i = 0; i < carsToSpawn; i++)
@@ -126,6 +124,5 @@ public class trafficSpawner : MonoBehaviour
                     SpawnTraffic();
                     
                 }
-        }
     }
 }

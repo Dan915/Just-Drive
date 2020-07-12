@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using System.Linq;
 
 public class tescik : MonoBehaviour
 {
@@ -54,4 +55,11 @@ public class tescik : MonoBehaviour
         //Volume.SetActive(true);
         volume.enabled = true;
     }
+
+}
+
+
+public class Player 
+{
+    int Age {get;set;}
 }

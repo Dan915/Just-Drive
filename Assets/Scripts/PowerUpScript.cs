@@ -24,6 +24,8 @@ public class PowerUpScript : MonoBehaviour
             default:
             break;
         }
+
+        // 7, 5, 2
     }
 
     // Update is called once per frame
