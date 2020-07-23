@@ -22,7 +22,7 @@ public class WorldGenerator : MonoBehaviour
     public Vector3 spawnPos;
     [Space]
     [Tooltip("Every 10th piece created difficulty will increase. More obstacles, faster pace")] public int worldPiecesCreated = 0;
-    [Tooltip("World movement speed")][Range(15,100)] public float playerSpeed;
+    [Tooltip("World movement speed")][Range(0,100)] public float playerSpeed;
     GameObject player;
     [SerializeField] GameObject background;
     Vector3 playerPos;

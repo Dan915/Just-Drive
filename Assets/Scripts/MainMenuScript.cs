@@ -10,8 +10,8 @@ public class MainMenuScript : MonoBehaviour
     [SerializeField]GameObject mainMenu, options;
     public GameObject trafficSpawner;
     Animator anim;
-    Toggle toggle;
-    Volume volume;
+    public Toggle toggle;
+    public Volume volume;
 
     private void Awake() 
     {
@@ -23,14 +23,15 @@ public class MainMenuScript : MonoBehaviour
     public void Play()
     {
         worldGenerator.GetComponent<WorldGenerator>().gameStarted = true;
+        worldGenerator.GetComponent<WorldGenerator>().targetSpeed = 15;
         Debug.Log("Fade out the canvas panel");
         StartCoroutine(trafficSpawner.GetComponent<trafficSpawner>().Delay());
         anim.SetTrigger("FadeOut");
+        StartCoroutine(Fade());
     }
     public void Options()
     {
         anim.SetTrigger("Flip");
-        StartCoroutine(Flip());
     }
     public void Quit()
     {
@@ -40,19 +41,19 @@ public class MainMenuScript : MonoBehaviour
     #endregion
 
     #region Options Menu
-    IEnumerator Flip()
+    public void GoBack()
     {
-        yield return new WaitForSeconds(1f);
-        options.SetActive(true);
-        mainMenu.SetActive(false);
+        anim.SetTrigger("FlipBack");
     }
-
-    public IEnumerator Back()
+    IEnumerator Fade()
     {
         yield return new WaitForSeconds(1f);
         options.SetActive(false);
-        mainMenu.SetActive(true);
+        mainMenu.SetActive(false);
+        // gameUI.SetActie(True);
     }
+
+   
     public void graphicsHigh()
     {
         QualitySettings.SetQualityLevel(3,true);
