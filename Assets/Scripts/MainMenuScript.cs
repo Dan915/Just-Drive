@@ -10,6 +10,8 @@ public class MainMenuScript : MonoBehaviour
     [SerializeField]GameObject mainMenu, options;
     public GameObject trafficSpawner;
     Animator anim;
+    [SerializeField] AnimationClip loading;
+    float duration;
     public Toggle toggle;
     public Volume volume;
 
@@ -17,6 +19,12 @@ public class MainMenuScript : MonoBehaviour
     {
         worldGenerator = GameObject.FindGameObjectWithTag("WorldGenerator");
         anim = gameObject.GetComponentInChildren<Animator>();
+        duration = loading.length;
+        mainMenu.SetActive(false);
+    }
+    private void Start() 
+    {
+        StartCoroutine(Loading());
     }
     #region Main Menu Panel
         
@@ -80,4 +88,10 @@ public class MainMenuScript : MonoBehaviour
     }
         
     #endregion
+
+    IEnumerator Loading()
+    {
+        yield return new WaitForSeconds(duration);
+        mainMenu.SetActive(true);
+    }
 }

@@ -19,7 +19,12 @@ public class DayNightController : MonoBehaviour
     float sunInitialIntensity;
     Color currentColor, color; 
     float currentExposure;
+    GameObject worldGenerator;
 
+    private void Awake() 
+    {
+        worldGenerator = GameObject.FindGameObjectWithTag("WorldGenerator");
+    }
     void Start()
     {
         sunInitialIntensity = sun.intensity;
@@ -35,6 +40,7 @@ public class DayNightController : MonoBehaviour
         //skybox[1].SetColor("_TintColor", skyboxColor);
         currentExposure = skybox[1].GetFloat("_Exposure");
 
+        if (worldGenerator.GetComponent<WorldGenerator>().gameStarted == true)
         currentTimeOfDay += (Time.deltaTime / secondsInFullDay) * timeMultiplier;
 
         if (currentTimeOfDay >= 1)
