@@ -7,10 +7,11 @@ using UnityEngine.Rendering;
 public class MainMenuScript : MonoBehaviour
 {
     GameObject worldGenerator;
-    [SerializeField]GameObject mainMenu, options;
+    [SerializeField]GameObject mainMenu, optionsMenu, pauseMenu, gameUI;
     public GameObject trafficSpawner;
     Animator anim;
     [SerializeField] AnimationClip loading;
+    [SerializeField] Image panelImage;
     float duration;
     public Toggle toggle;
     public Volume volume;
@@ -21,11 +22,13 @@ public class MainMenuScript : MonoBehaviour
         anim = gameObject.GetComponentInChildren<Animator>();
         duration = loading.length;
         mainMenu.SetActive(false);
+        panelImage.enabled = true;
     }
     private void Start() 
     {
         StartCoroutine(Loading());
     }
+//////////////////////////////////////////////////////////////////////
     #region Main Menu Panel
         
     public void Play()
@@ -45,9 +48,14 @@ public class MainMenuScript : MonoBehaviour
     {
         Application.Quit();
     }
+    IEnumerator Loading()
+    {
+        yield return new WaitForSeconds(duration);
+        mainMenu.SetActive(true);
+    }
    
     #endregion
-
+//////////////////////////////////////////////////////////////////////
     #region Options Menu
     public void GoBack()
     {
@@ -55,8 +63,10 @@ public class MainMenuScript : MonoBehaviour
     }
     IEnumerator Fade()
     {
+        panelImage.enabled = false;
         yield return new WaitForSeconds(1f);
-        options.SetActive(false);
+        gameUI.SetActive(true);
+        optionsMenu.SetActive(false);
         mainMenu.SetActive(false);
         // gameUI.SetActie(True);
     }
@@ -88,10 +98,29 @@ public class MainMenuScript : MonoBehaviour
     }
         
     #endregion
-
-    IEnumerator Loading()
+/////////////////////////////////////////////////////////////////////    
+    #region Gameplay UI
+    public void PauseGame()
     {
-        yield return new WaitForSeconds(duration);
-        mainMenu.SetActive(true);
+        anim.SetTrigger("Pause");
+        Time.timeScale = 0;
+        StartCoroutine(EnterPauseMenu());
     }
+    public void ResumeGame()
+    {
+        anim.SetTrigger("Resume");
+        StartCoroutine(ExitPauseMenu());
+    }
+    IEnumerator EnterPauseMenu()
+    {
+        yield return new WaitForSecondsRealtime(0.25f);
+        pauseMenu.SetActive(true);
+    }
+    IEnumerator ExitPauseMenu()
+    {
+        yield return new WaitForSecondsRealtime(1);
+        Time.timeScale = 1;
+        pauseMenu.SetActive(false);
+    }
+    #endregion
 }
