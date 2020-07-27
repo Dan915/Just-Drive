@@ -184,7 +184,8 @@ public class WorldGenerator : MonoBehaviour
         GameObject RandomPowerUp = PowerUps[index].prefab;
         Debug.Log("power up to spawn " + index);
         playerPos = player.transform.position;
-        Instantiate(RandomPowerUp, new Vector3( Random.Range(-5, 10), playerPos.y, playerPos.z + 50), Quaternion.identity);
+        int[] line = new int [] {-5,0,5,10};
+        Instantiate(RandomPowerUp, new Vector3( Random.Range(-5, line.Length), playerPos.y, playerPos.z + 50), Quaternion.identity);
         Debug.Log("Spawn that power up");
     }
 

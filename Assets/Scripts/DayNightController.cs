@@ -24,6 +24,7 @@ public class DayNightController : MonoBehaviour
     private void Awake() 
     {
         worldGenerator = GameObject.FindGameObjectWithTag("WorldGenerator");
+        currentTimeOfDay = 0.4f;
     }
     void Start()
     {
