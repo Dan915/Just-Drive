@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public class WorldGenerator : MonoBehaviour
 {
+    public static WorldGenerator instance;
     [Header("UI Elements")]
     public int score;
-    public Text scoreText;
     [Space(15)]
     [Header("World Pieces Settings")]
     public WorldPieceData[] myWorldPiecesData;
@@ -34,7 +34,7 @@ public class WorldGenerator : MonoBehaviour
 
     void Awake() 
     {
-        
+        instance = this;
     }
 
     void Start()

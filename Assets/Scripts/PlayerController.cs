@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
   public PowerUpsData[] powerUps;
   public int shieldLife;
   public int magnetStrength;
+  int distanceUnit;
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +50,7 @@ public class PlayerController : MonoBehaviour
         //Position = transform.position;
         myCam = Camera.main;
         myRb = gameObject.GetComponent<Rigidbody>();
+        InvokeRepeating("distance", 0, 1/speed);
     }
 
     // Update is called once per frame
@@ -63,6 +65,7 @@ public class PlayerController : MonoBehaviour
         {
             ChangeLane();
             transform.position += Vector3.forward * Time.deltaTime * speed;
+
         }
         
         Position.y = transform.position.y;
@@ -310,7 +313,15 @@ public class PlayerController : MonoBehaviour
         isTurningRight = false;
         isTurningLeft = false;
     }
-    
+    void distance()
+    {
+        if (!crashed && WorldGenerator.instance.gameStarted == true)
+        {
+            distanceUnit += 1;
+            ScoreManager.instance.score = distanceUnit;
+            ScoreManager.instance.UpdateScore();
+        }
+    }
  
 
 }

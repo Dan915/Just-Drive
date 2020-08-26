@@ -12,12 +12,12 @@ public class PowerUpsData : ScriptableObject {
     }
     public PowerUpName PowerName;
     public string description;
-    public string upgrade1Description, upgrade2Description, upgrade3Description;
+    public string[] upgradeDescription;
     public Sprite artwork; 
     public GameObject prefab;
     public float duration;
     public int strenght;
     public int Range;
-    public int upgrade1Price, upgrade2Price, upgrade3Price;    
+    public int[] upgradePrice;    
 
 }

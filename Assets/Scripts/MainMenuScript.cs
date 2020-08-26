@@ -7,7 +7,7 @@ using UnityEngine.Rendering;
 public class MainMenuScript : MonoBehaviour
 {
     GameObject worldGenerator;
-    [SerializeField]GameObject mainMenu, optionsMenu, pauseMenu, gameUI;
+    [SerializeField]GameObject mainMenu, shopMenu, optionsMenu, pauseMenu, gameUI, loadingBar;
     public GameObject trafficSpawner;
     Animator anim;
     [SerializeField] AnimationClip loading;
@@ -15,7 +15,9 @@ public class MainMenuScript : MonoBehaviour
     float duration;
     public Toggle toggle;
     public Volume volume;
-
+    [Space (20), Header ("Shop Objects")]
+    public PowerUpsData[] upgrades;
+    public GameObject[] shopItems;
     private void Awake() 
     {
         worldGenerator = GameObject.FindGameObjectWithTag("WorldGenerator");
@@ -48,10 +50,15 @@ public class MainMenuScript : MonoBehaviour
     {
         Application.Quit();
     }
+    public void Shop()
+    {
+        anim.SetTrigger("ShopFlip");
+    }
     IEnumerator Loading()
     {
         yield return new WaitForSeconds(duration);
         mainMenu.SetActive(true);
+        loadingBar.SetActive(false);
     }
    
     #endregion
@@ -61,10 +68,11 @@ public class MainMenuScript : MonoBehaviour
     {
         anim.SetTrigger("FlipBack");
     }
+
     IEnumerator Fade()
     {
         panelImage.enabled = false;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         gameUI.SetActive(true);
         optionsMenu.SetActive(false);
         mainMenu.SetActive(false);
@@ -97,6 +105,15 @@ public class MainMenuScript : MonoBehaviour
             volume.enabled = false;
     }
         
+    #endregion
+///////////////////////////////////////////////////////////////////// 
+    #region Shop Menu
+    
+    public void GoBackShop()
+    {
+        anim.SetTrigger("ShopFlipReverse");
+    }
+
     #endregion
 /////////////////////////////////////////////////////////////////////    
     #region Gameplay UI

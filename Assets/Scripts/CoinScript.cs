@@ -38,8 +38,9 @@ public class CoinScript : MonoBehaviour
         {
             Debug.Log("Add points to score");
             gameObject.SetActive(false);
+            ScoreManager.instance.AddCoin(points);
             // gameManager.GetComponent<gameManager().score += points;
-            worldGenerator.GetComponent<WorldGenerator>().score += points;
+            // worldGenerator.GetComponent<WorldGenerator>().score += points;
             
         }
     }

@@ -1,5 +1,55 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &399689535
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 399689536}
+  - component: {fileID: 399689537}
+  m_Layer: 0
+  m_Name: ScoreManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &399689536
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399689535}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 131.99792, y: 284.92004, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2499250888481138561}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &399689537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399689535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30a90d39159563d4e829e36d96b41f22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
+  highScore: 0
+  coins: 0
+  coinValue: 0
+  scoreText: {fileID: 0}
+  highScoreText: {fileID: 0}
+  coinsText: {fileID: 0}
 --- !u!1 &2499250888481138563
 GameObject:
   m_ObjectHideFlags: 0
@@ -15,7 +65,7 @@ GameObject:
   m_TagString: WorldGenerator
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2499250888481138561
 Transform:
@@ -27,7 +77,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 399689536}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -44,19 +95,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
-  scoreText: {fileID: 0}
   myWorldPiecesData:
   - {fileID: 11400000, guid: 13e2dc84a637d64409512e1886a96585, type: 2}
   - {fileID: 11400000, guid: 7d48e00ea22a0d44b852b85db48074f9, type: 2}
   - {fileID: 11400000, guid: d45ad48ea07998449a0a294d16efb89a, type: 2}
   - {fileID: 11400000, guid: 306a035eddfb24e47b45d663b47e90c6, type: 2}
   - {fileID: 11400000, guid: 94275c4be71e4c143a989a7f9f76130d, type: 2}
-  initialPiecesToGenerate: 5
+  initialPiecesToGenerate: 2
   lastPiece: {fileID: 11400000, guid: 13e2dc84a637d64409512e1886a96585, type: 2}
   nextPiece: {fileID: 0}
-  lastPos: {x: -10.5, y: 0, z: 0}
+  spawnOrigin: {x: 0, y: 0, z: 0}
   spawnPos: {x: 0, y: 0, z: 0}
-  worldPiecesCreated: 8
+  worldPiecesCreated: 0
   playerSpeed: 0
-  _currentSpeed: 5
-  _targetSpeed: 5
+  background: {fileID: 0}
+  currentSpeed: 0
+  targetSpeed: 0
+  PowerUps:
+  - {fileID: 11400000, guid: b6de05eb4ed5e3540bfef4009f992d73, type: 2}
+  - {fileID: 11400000, guid: ea31ed52e3b54a647b0e7ba5a2ae063e, type: 2}
+  gameStarted: 0

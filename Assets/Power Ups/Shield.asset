@@ -14,14 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PowerName: 1
   description: Nothing can destory you while the shield is active
-  upgrade1Description: Increase strength of shield to make it last longer
-  upgrade2Description: Extend duration time of the shield
-  upgrade3Description: 
+  upgradeDescription: []
   artwork: {fileID: 0}
   prefab: {fileID: 9197150454689662534, guid: 692db339c2c945c468f6c2f6ae42e32a, type: 3}
   duration: 5
   strenght: 1
   Range: 0
-  upgrade1Price: 500
-  upgrade2Price: 500
-  upgrade3Price: 0
+  upgrade1Price: 10000
+  upgrade2Price: 10000
+  upgrade3Price: 10000
