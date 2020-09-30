@@ -78,48 +78,6 @@ public class PlayerController : MonoBehaviour
             isShieldActivated = false;
         }
         
-
-        // Touch Swipe Input
-        if (Input.touchCount > 0)
-{
-	theTouch = Input.GetTouch(0);
-
-	if (theTouch.phase == TouchPhase.Began)
-	{
-		touchStartPosition = theTouch.position;
-	}
-
-	else if (theTouch.phase == TouchPhase.Moved || theTouch.phase == TouchPhase.Ended)
-	{
-		touchEndPosition = theTouch.position;
-
-		float x = touchEndPosition.x - touchStartPosition.x;
-		float y = touchEndPosition.y - touchStartPosition.y;
-
-		if (Mathf.Abs(x) == 0 && Mathf.Abs(y) == 0)
-		{
-			Debug.Log("Tapped");
-		}
-
-		else if (Mathf.Abs(x) > Mathf.Abs(y))
-		{
-            if (x > 0)
-            {
-                Debug.Log("Right");
-            }
-            else
-            {
-                Debug.Log("Right");
-            }
-			
-		}
-
-		// else
-		// {
-		// 	direction = y > 0 ? “Up” : “Down”;
-		// }
-	}
-}
        
        TurnCar();
         // stwiching cameras based on device orientation
@@ -180,8 +138,92 @@ public class PlayerController : MonoBehaviour
         Vector3 laneThree = new Vector3 ( 5, transform.position.y, transform.position.z);
         Vector3 laneFour = new Vector3 (10,transform.position.y, transform.position.z);
 
+        if (Input.touchCount > 0)
+        {
+            theTouch = Input.GetTouch(0);
+
+            if (theTouch.phase == TouchPhase.Began)
+            {
+                touchStartPosition = theTouch.position;
+            }
+
+            else if (theTouch.phase == TouchPhase.Ended)
+            {
+                touchEndPosition = theTouch.position;
+
+                float x = touchEndPosition.x - touchStartPosition.x;
+                float y = touchEndPosition.y - touchStartPosition.y;
+
+                if (Mathf.Abs(x) == 0 && Mathf.Abs(y) == 0)
+                {
+                    Debug.Log("Tapped");
+                }
+
+                else if (Mathf.Abs(x) > Mathf.Abs(y))
+                {
+                    if (x > 0)
+                    {
+                        Debug.Log("Right");
+                        isTurningRight = true;
+                        TurnCar();
+                        switch (currentLane)
+                        {
+                            case 1:
+                            Position = laneTwo;
+                            currentLane ++;
+                            break;
+                            case 2:
+                            Position = laneThree;
+                            currentLane ++;
+                            break;
+                            case 3:
+                            Position = laneFour;
+                            currentLane ++;
+                            break;
+                            // case 1:
+                            // Position = laneOne;
+                            // break;
+                            default:
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        Debug.Log("Left");
+                        isTurningLeft = true;
+                        TurnCar();
+                        switch (currentLane)
+                        {
+                            case 4:
+                            Position = laneThree;
+                            currentLane --;
+                            break;
+                            case 3:
+                            Position = laneTwo;
+                            currentLane --;
+                            break;
+                            case 2:
+                            Position = laneOne;
+                            currentLane --;
+                            break;
+                            // case 1:
+                            // Position = laneOne;
+                            // break;
+                            default:
+                            break;
+                        }
+                    }
+                    
+                }
+
+                // else
+                // {
+                // 	direction = y > 0 ? “Up” : “Down”;
+                // }
+            }
+        }
  
-            if (Input.GetKeyUp(KeyCode.RightArrow))
+            if (Input.GetKeyUp(KeyCode.RightArrow)  )
             {
                 isTurningRight = true;
                 TurnCar();

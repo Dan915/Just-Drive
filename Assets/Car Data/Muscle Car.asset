@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 407da8182634d3e4898a2c42ab2770c8, type: 3}
   m_Name: Muscle Car
   m_EditorClassIdentifier: 
-  isUnlocked: 0
-  price: 0
+  carName: 
+  isUnlocked: 1
+  price: 200
   prefab: {fileID: 141870, guid: edf6cb56e12fba648b2cf1e7dfa5bf88, type: 3}
-  thumbnail: {fileID: 0}
+  thumbnail: {fileID: 21300002, guid: 8a9605cca7152fc4bbef9451d4171c96, type: 3}

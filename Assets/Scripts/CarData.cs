@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CarData", menuName = "Custom/CarData", order = 0)]
 public class CarData : ScriptableObject
 {
+    public string carName;
     public bool isUnlocked;
     public int price;
     public GameObject prefab;
