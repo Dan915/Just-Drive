@@ -42,7 +42,7 @@ MonoBehaviour:
   selectorFont: {fileID: 0}
   hSelectorFontSize: 28
   selectorColor: {r: 255, g: 255, b: 255, a: 1}
-  selectorHighlightedColor: {r: 255, g: 255, b: 255, a: 1}
+  selectorHighlightedColor: {r: 0.06666667, g: 0.75686276, b: 0.46666667, a: 1}
   hSelectorInvertAnimation: 0
   hSelectorLoopSelection: 0
   inputFieldFont: {fileID: 0}
