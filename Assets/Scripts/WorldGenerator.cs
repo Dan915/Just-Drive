@@ -8,7 +8,7 @@ public class WorldGenerator : MonoBehaviour
 {
     public static WorldGenerator instance;
     [Header("UI Elements")]
-    public int score;
+    //public int score;
     [Space(15)]
     [Header("World Pieces Settings")]
     public WorldPieceData[] myWorldPiecesData;
@@ -27,7 +27,7 @@ public class WorldGenerator : MonoBehaviour
     [SerializeField] GameObject background;
     Vector3 playerPos;
     public float currentSpeed;
-    public float targetSpeed = 15;  
+    public float targetSpeed = 20;  
     [Space(10)]
     public PowerUpsData[] PowerUps;
     public bool gameStarted = false;
@@ -167,7 +167,7 @@ public class WorldGenerator : MonoBehaviour
             worldPiecesCreated = 0;
             if (playerSpeed < 100)
             {
-               targetSpeed = currentSpeed + 5;
+               targetSpeed += 2.5f;
                // increase motion blur in camera post production
             }
             SpawnPowerUp();

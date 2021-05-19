@@ -36,7 +36,7 @@ public class MainMenuScript : MonoBehaviour
     public void Play()
     {
         worldGenerator.GetComponent<WorldGenerator>().gameStarted = true;
-        worldGenerator.GetComponent<WorldGenerator>().targetSpeed = 15;
+        worldGenerator.GetComponent<WorldGenerator>().targetSpeed =20;
         Debug.Log("Fade out the canvas panel");
         StartCoroutine(trafficSpawner.GetComponent<trafficSpawner>().Delay());
         anim.SetTrigger("FadeOut");
@@ -82,17 +82,20 @@ public class MainMenuScript : MonoBehaviour
    
     public void graphicsHigh()
     {
-        QualitySettings.SetQualityLevel(3,true);
+        QualitySettings.SetQualityLevel(2,true);
+        Debug.Log(QualitySettings.GetQualityLevel());
     }
 
     public void graphicsMedium()
     {
-        QualitySettings.SetQualityLevel(2,true);
+        QualitySettings.SetQualityLevel(1,true);
+        Debug.Log(QualitySettings.GetQualityLevel());
     }
 
     public void graphicsLow()
     {
-        QualitySettings.SetQualityLevel(1,true);
+        QualitySettings.SetQualityLevel(0,true);
+        Debug.Log(QualitySettings.GetQualityLevel());
     }
 
     public void postProcessingToggle()

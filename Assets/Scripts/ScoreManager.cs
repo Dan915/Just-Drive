@@ -6,13 +6,17 @@ using TMPro;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
-    public int score, highScore, coins, coinValue;
-    public TextMeshProUGUI scoreText, highScoreText, coinsText;
+    public float score, highScore;
+    public int   coins, coinValue;
+    public TextMeshProUGUI scoreText, highScoreText, coinsText, coinsTextShop;
     public WorldGenerator worldGenerator;
 
     private void Awake() 
     {
         instance = this;
+        coins = PlayerPrefs.GetInt("coins");
+        coinsText.text = coins.ToString();
+        coinsTextShop.text = coinsText.text;
     }
 
     public void AddCoin(int coinValue)
@@ -20,20 +24,18 @@ public class ScoreManager : MonoBehaviour
         coins+= coinValue;
 
         coinsText.text = coins.ToString();
-        worldGenerator.score = coins;
+        coinsTextShop = coinsText;
     }
     public void UpdateScore()
     {
-        scoreText.text = score.ToString() + "m";
+        scoreText.text = score.ToString("0") + "m";
     }
-    void Start()
+    public void SaveScore()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (score > highScore)
+        {
+            PlayerPrefs.SetFloat("highScore", highScore);
+        }
+        PlayerPrefs.SetInt("coins", coins);
     }
 }

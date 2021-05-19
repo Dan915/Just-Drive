@@ -28,14 +28,21 @@ public class ShieldShaderScript : MonoBehaviour
         // in the opposite direction.
         if (t > duration)
         {
-            material.SetFloat("gradientValue", 0);
-            material.SetFloat("fadeSpeed", 0);
-            t = 0.0f;
+            ResetMatValues();
             //this.gameObject.SetActive(false);
             //GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().isShieldActivated = false;
             //GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().shieldEffect.SetActive(false);         
-
         }
+    }
+    void ResetMatValues()
+    {
+        material.SetFloat("gradientValue", 0);
+        material.SetFloat("fadeSpeed", 0);
+        t = 0.0f;
+    }
+    void OnDisable()
+    {
+        ResetMatValues();
     }
 
 

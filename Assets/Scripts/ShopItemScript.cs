@@ -9,9 +9,7 @@ public class ShopItemScript : MonoBehaviour
 
     public PowerUpsData powerUp;
     public Image powerUpImage;
-    public int[] price;
     public TextMeshProUGUI[] upgradesDescription, upgradePrice;
-    int durationCounter = 0, strenghtCounter = 0, RangeCounter = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,38 +39,56 @@ public class ShopItemScript : MonoBehaviour
     public void BuyDuration()
     {
 
-        if (durationCounter < 5)
-        {
-            powerUp.duration += 5;
-            powerUp.upgradePrice[0] += 10000;
-            UpdatePrices();
-            durationCounter++;
+        if (ScoreManager.instance.coins >= powerUp.upgradePrice[0])
+        {    
+            if (powerUp.durationUpgradeCount < 5)
+            {
+                powerUp.duration += 5;
+                powerUp.upgradePrice[0] += 10000;
+                UpdatePrices();
+                powerUp.durationUpgradeCount++;
+            }
         }
+        else
+        Debug.Log("Nope. Get More Money!!!!!");
+        
+
     }
     public void BuyStrength()
     {
-        if (strenghtCounter < 5)
+        if (ScoreManager.instance.coins >= powerUp.upgradePrice[1])
         {
-            if (powerUp.name == "Magnet")
+            if (powerUp.strenghtUpgradeCount < 5)
+            {
+                if (powerUp.name == "Magnet")
 
-            powerUp.strenght = powerUp.strenght + 5;
-            else
-            powerUp.strenght += 1;
+                powerUp.strenght += 5;
+                else
+                powerUp.strenght += 1;
 
-            powerUp.upgradePrice[1] += 10000;
-            UpdatePrices();
-            strenghtCounter ++;
+                powerUp.upgradePrice[1] += 10000;
+                UpdatePrices();
+                powerUp.strenghtUpgradeCount ++;
+            }
         }
+        else
+        Debug.Log("You do not have enough money. Go Get Some");
     }
     public void BuyRange()
     {
-        if (RangeCounter < 5)
+        if (ScoreManager.instance.coins >= powerUp.upgradePrice[2])
         {
-            powerUp.Range = powerUp.Range + 10;
-            powerUp.upgradePrice[2] += 10000;
-            UpdatePrices();
-            RangeCounter++;
+            if (powerUp.rangeUpgradeCount < 5)
+            {
+                powerUp.range += 10;
+                powerUp.upgradePrice[2] += 10000;
+                UpdatePrices();
+                powerUp.rangeUpgradeCount++;
+            }
         }
+        else
+        Debug.Log("Nope. Get More Money!!!!!");
+        
     }
 
     

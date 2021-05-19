@@ -84,17 +84,17 @@ public class DayNightController : MonoBehaviour
             RenderSettings.skybox = skybox[1];
             RenderSettings.sun = moon;
             //RenderSettings.fog = false;
-            moon.intensity = Mathf.Lerp(moon.intensity, 0.25f, 1 *Time.deltaTime);
+            moon.intensity = Mathf.Lerp(moon.intensity, 0.5f, 1 *Time.deltaTime);
 
             if (currentTimeOfDay >= 0.8f)
-                skybox[1].SetFloat("_Exposure", Mathf.Lerp(currentExposure, 0.3f, 0.5f * Time.deltaTime));
+                skybox[1].SetFloat("_Exposure", Mathf.Lerp(currentExposure, 0.35f, 0.5f * Time.deltaTime));
             else if (currentTimeOfDay <= 0.15f)
-                skybox[1].SetFloat("_Exposure", Mathf.Lerp(currentExposure, 0.05f, 1 * Time.deltaTime));
+                skybox[1].SetFloat("_Exposure", Mathf.Lerp(currentExposure, 0.25f, 1 * Time.deltaTime));
         }
         else
         {
             RenderSettings.skybox = skybox[0];
-            skybox[1].SetFloat("_Exposure", Mathf.Lerp(currentExposure ,0.05f, 1 * Time.deltaTime));         
+            skybox[1].SetFloat("_Exposure", Mathf.Lerp(currentExposure ,0.15f, 1 * Time.deltaTime));         
             RenderSettings.sun = sun;
             //RenderSettings.fog = true;
         }
@@ -105,7 +105,7 @@ public class DayNightController : MonoBehaviour
 
 
         if (currentTimeOfDay >= 0.14f && currentTimeOfDay <= 0.7f)
-            moon.intensity = Mathf.Lerp(moon.intensity, 0.05f, 5 * Time.deltaTime);
+            moon.intensity = Mathf.Lerp(moon.intensity, 0.15f, 5 * Time.deltaTime);
        
            // skyboxColor = Color.Lerp( currentSkyboxColor, skyboxTint[0], 2 * Time.deltaTime);
         //RenderSettings.fogColor = fogColors.Evaluate(currentTimeOfDay);

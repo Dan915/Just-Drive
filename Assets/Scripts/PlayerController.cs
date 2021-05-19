@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
   public PowerUpsData[] powerUps;
   public int shieldLife;
   public int magnetStrength;
-  int distanceUnit;
+  float distanceUnit;
 
     // Start is called before the first frame update
     void Start()
@@ -359,9 +359,14 @@ public class PlayerController : MonoBehaviour
     {
         if (!crashed && WorldGenerator.instance.gameStarted == true)
         {
-            distanceUnit += 1;
+            float speed = WorldGenerator.instance.currentSpeed;
+            distanceUnit += 1 * (speed / 10);
             ScoreManager.instance.score = distanceUnit;
             ScoreManager.instance.UpdateScore();
+        }
+        else if (crashed)
+        {
+            ScoreManager.instance.SaveScore();
         }
     }
  

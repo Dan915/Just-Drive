@@ -23,7 +23,7 @@ public class CoinScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.GetComponent<PlayerController>().isMagnetActivated && Vector3.Distance(transform.position, player.transform.position) <= magnet.Range)
+        if (player.GetComponent<PlayerController>().isMagnetActivated && Vector3.Distance(transform.position, player.transform.position) <= magnet.range)
         {
             Debug.Log("moving toward the player");
             float step = magnet.strenght * Time.deltaTime;
