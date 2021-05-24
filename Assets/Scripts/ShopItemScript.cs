@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Michsky.UI.ModernUIPack;
 
 public class ShopItemScript : MonoBehaviour
 {
@@ -10,10 +11,11 @@ public class ShopItemScript : MonoBehaviour
     public PowerUpsData powerUp;
     public Image powerUpImage;
     public TextMeshProUGUI[] upgradesDescription, upgradePrice;
+    public NotificationManager noMoney;
     // Start is called before the first frame update
     void Start()
     {
-        //powerUpImage.sprite = powerUp.artwork;
+        powerUpImage.sprite = powerUp.artwork;
       //  upgradesDescription[0].text = powerUp.upgradeDescription[0];
         //upgradesDescription[1].text = powerUp.upgrade2Description;
         //upgradesDescription[1].text = powerUp.upgrade3Description;
@@ -87,8 +89,16 @@ public class ShopItemScript : MonoBehaviour
             }
         }
         else
-        Debug.Log("Nope. Get More Money!!!!!");
-        
+        {
+            Debug.Log("Nope. Get More Money!!!!!");
+            ShowMessage(noMoney, "Title","You don't have enough money. Go get some more");
+        }    
+    }
+    public void ShowMessage(NotificationManager noti, string title, string message)
+    {
+        noti.title = title;
+        noti.description = message;
+        noti.OpenNotification();
     }
 
     

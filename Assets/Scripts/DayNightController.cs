@@ -20,6 +20,11 @@ public class DayNightController : MonoBehaviour
     Color currentColor, color; 
     float currentExposure;
     GameObject worldGenerator;
+    [Tooltip("Assign materials of buildings to turn on lights at nighttime")]
+    public Material[] materials;
+    
+    [ColorUsage(false, true)]
+    public Color[] emissionColors;
 
     private void Awake() 
     {
@@ -83,6 +88,11 @@ public class DayNightController : MonoBehaviour
         {
             RenderSettings.skybox = skybox[1];
             RenderSettings.sun = moon;
+            foreach (var mat in materials)
+            {
+                mat.SetColor("_EmissionColor", Color.Lerp(emissionColors[0], emissionColors[1],1));
+                //emissionColors[1]);
+            }
             //RenderSettings.fog = false;
             moon.intensity = Mathf.Lerp(moon.intensity, 0.5f, 1 *Time.deltaTime);
 
@@ -96,6 +106,11 @@ public class DayNightController : MonoBehaviour
             RenderSettings.skybox = skybox[0];
             skybox[1].SetFloat("_Exposure", Mathf.Lerp(currentExposure ,0.15f, 1 * Time.deltaTime));         
             RenderSettings.sun = sun;
+            foreach (var mat in materials)
+            {
+                mat.SetColor("_EmissionColor", Color.Lerp(emissionColors[1], emissionColors[0],1));
+                //mat.SetColor("_EmissionColor", emissionColors[0]);
+            }
             //RenderSettings.fog = true;
         }
 

@@ -9,10 +9,15 @@ public class TrafficScript : MonoBehaviour
     public int random;
     bool isDisabled = false;
     public bool objectInFront = false;
+    public Material[] materials;
+    public bool isRandomMaterial;
     // Start is called before the first frame update
     void Start()
     {
         GetComponent<BoxCollider>().enabled = true;
+        if (isRandomMaterial)
+            ChooseMaterial();
+
         player = GameObject.FindGameObjectWithTag("Player");
         worldGenerator = GameObject.FindGameObjectWithTag("WorldGenerator");
         if (worldGenerator.GetComponent<WorldGenerator>().playerSpeed >= 80)
@@ -84,6 +89,18 @@ public class TrafficScript : MonoBehaviour
     {
         isDisabled = true;
     }
+
+    void ChooseMaterial()
+    {
+        int r = Random.Range(0,materials.Length);
+        this.gameObject.GetComponent<MeshRenderer>().material = materials[r];
+    }
+    void OnEnable()
+    {
+        if (isRandomMaterial)
+            ChooseMaterial();
+    }
+
 
     
 }
