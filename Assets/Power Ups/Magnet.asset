@@ -20,10 +20,10 @@ MonoBehaviour:
   - Range
   artwork: {fileID: 21300000, guid: 153ddf09ae4964b6d9f21e0e6fd97610, type: 3}
   prefab: {fileID: 1969410343205220774, guid: 07aa0f35ada09504dbc8045d6bdafbfb, type: 3}
-  duration: 30
-  strenght: 5
-  range: 0
-  upgradePrice: 10270000983a0000a8610000
-  durationUpgradeCount: 0
-  strenghtUpgradeCount: 0
-  rangeUpgradeCount: 0
+  duration: 10
+  strenght: 15
+  range: 25
+  upgradePrice: ab2700002f280000c6500000
+  durationUpgradeCount: 3
+  strenghtUpgradeCount: 3
+  rangeUpgradeCount: 4

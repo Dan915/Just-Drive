@@ -18,6 +18,11 @@ public class ScoreManager : MonoBehaviour
         coinsText.text = coins.ToString();
         coinsTextShop.text = coinsText.text;
     }
+    public void UpdateCoins()
+    {
+        coinsText.text = coins.ToString();
+        coinsTextShop.text = coinsText.text;
+    }
 
     public void AddCoin(int coinValue)
     {

@@ -13,6 +13,7 @@ public class CarSelector : MonoBehaviour
     public GameObject Image;
     Sprite thumbnail;
     public HorizontalSelector mySelector;
+    public ButtonManagerBasic buyButton;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,10 @@ public class CarSelector : MonoBehaviour
         thumbnail = carData[0].thumbnail;
         Image.GetComponent<Image>().sprite = thumbnail;
         mySelector.defaultIndex = 0;
+    }
+    void Update()
+    {
+        
     }
 
     public void Van()
@@ -39,8 +44,7 @@ public class CarSelector : MonoBehaviour
         {
             Debug.Log("Go get some money");
         }
-        currentCarSelected = carData[i];
-     
+        currentCarSelected = carData[i];     
     }
     public void Coupe()
     {
@@ -57,12 +61,35 @@ public class CarSelector : MonoBehaviour
         
         currentCarSelected = carData[i];
     }
+    public void HotHatch()
+    {
+        int i = 2;
+        Debug.Log("Choose HotHatch");
+        price = carData[i].price;
+        isUnlocked = carData[i].isUnlocked;
+        thumbnail = carData[i].thumbnail;
+        Image.GetComponent<Image>().sprite = thumbnail;
+        if (isUnlocked)
+        player.GetComponentInChildren<PlayerController>().car = carData[i].prefab;
+        else
+            Debug.Log("Get more Money");
+        
+        currentCarSelected = carData[i];
+    }
     
     public void BuyCar()
     {
-        Debug.Log("if enough money buy the car");
-        isUnlocked = true;
-        currentCarSelected.isUnlocked = true;
+        if (ScoreManager.instance.coins >= currentCarSelected.price && !isUnlocked)
+        {
+            ScoreManager.instance.coins -= currentCarSelected.price;
+            ScoreManager.instance.UpdateCoins();
+            isUnlocked = true;
+            currentCarSelected.isUnlocked = true;
+            Debug.Log("Bought new car");
+        }
+        else
+        Debug.Log("not enough money to buy the car");
     }
+
 
 }

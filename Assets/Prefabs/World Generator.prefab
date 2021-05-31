@@ -45,11 +45,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   highScore: 0
-  coins: 0
+  coins: 50
   coinValue: 0
   scoreText: {fileID: 0}
   highScoreText: {fileID: 0}
   coinsText: {fileID: 0}
+  coinsTextShop: {fileID: 0}
+  worldGenerator: {fileID: 2499250888481138560}
 --- !u!1 &2499250888481138563
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,14 +96,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4879c994d3757754d9120e9d66428023, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
   myWorldPiecesData:
   - {fileID: 11400000, guid: 13e2dc84a637d64409512e1886a96585, type: 2}
   - {fileID: 11400000, guid: 7d48e00ea22a0d44b852b85db48074f9, type: 2}
   - {fileID: 11400000, guid: d45ad48ea07998449a0a294d16efb89a, type: 2}
   - {fileID: 11400000, guid: 306a035eddfb24e47b45d663b47e90c6, type: 2}
   - {fileID: 11400000, guid: 94275c4be71e4c143a989a7f9f76130d, type: 2}
-  initialPiecesToGenerate: 2
+  initialPiecesToGenerate: 0
   lastPiece: {fileID: 11400000, guid: 13e2dc84a637d64409512e1886a96585, type: 2}
   nextPiece: {fileID: 0}
   spawnOrigin: {x: 0, y: 0, z: 0}

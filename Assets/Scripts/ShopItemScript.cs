@@ -45,6 +45,8 @@ public class ShopItemScript : MonoBehaviour
         {    
             if (powerUp.durationUpgradeCount < 5)
             {
+                ScoreManager.instance.coins -= powerUp.upgradePrice[0];
+                ScoreManager.instance.UpdateCoins();
                 powerUp.duration += 5;
                 powerUp.upgradePrice[0] += 10000;
                 UpdatePrices();
@@ -67,7 +69,8 @@ public class ShopItemScript : MonoBehaviour
                 powerUp.strenght += 5;
                 else
                 powerUp.strenght += 1;
-
+                ScoreManager.instance.coins -= powerUp.upgradePrice[1];
+                ScoreManager.instance.UpdateCoins();
                 powerUp.upgradePrice[1] += 10000;
                 UpdatePrices();
                 powerUp.strenghtUpgradeCount ++;
@@ -82,6 +85,8 @@ public class ShopItemScript : MonoBehaviour
         {
             if (powerUp.rangeUpgradeCount < 5)
             {
+                ScoreManager.instance.coins -= powerUp.upgradePrice[2];
+                ScoreManager.instance.UpdateCoins();
                 powerUp.range += 10;
                 powerUp.upgradePrice[2] += 10000;
                 UpdatePrices();

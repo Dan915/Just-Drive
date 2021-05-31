@@ -1566,6 +1566,7 @@ MonoBehaviour:
   isUnlocked: 0
   Image: {fileID: 1718799519}
   mySelector: {fileID: 119084804}
+  buyButton: {fileID: 0}
 --- !u!114 &119084806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5516,10 +5517,10 @@ RectTransform:
   m_Father: {fileID: 1432502187}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 8, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 354, y: -4}
+  m_SizeDelta: {x: 8, y: 8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &423127551
 CanvasRenderer:
@@ -11551,10 +11552,10 @@ RectTransform:
   m_Father: {fileID: 1432502187}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 8, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 390, y: -4}
+  m_SizeDelta: {x: 8, y: 8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &917228457
 CanvasRenderer:
@@ -21292,10 +21293,10 @@ RectTransform:
   m_Father: {fileID: 1432502187}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 8, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 372, y: -4}
+  m_SizeDelta: {x: 8, y: 8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1881005870
 CanvasRenderer:
@@ -23925,10 +23926,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 399689537, guid: 4ff3849e4d62493438d7de03cc4d3e11, type: 3}
-      propertyPath: coins
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 399689537, guid: 4ff3849e4d62493438d7de03cc4d3e11, type: 3}
       propertyPath: coinsText
       value: 
       objectReference: {fileID: 65437214}
@@ -23940,20 +23937,11 @@ PrefabInstance:
       propertyPath: coinsTextShop
       value: 
       objectReference: {fileID: 1836314608}
-    - target: {fileID: 399689537, guid: 4ff3849e4d62493438d7de03cc4d3e11, type: 3}
-      propertyPath: worldGenerator
-      value: 
-      objectReference: {fileID: 1664006328}
     - target: {fileID: 2499250888481138560, guid: 4ff3849e4d62493438d7de03cc4d3e11,
         type: 3}
       propertyPath: background
       value: 
       objectReference: {fileID: 1009083963}
-    - target: {fileID: 2499250888481138560, guid: 4ff3849e4d62493438d7de03cc4d3e11,
-        type: 3}
-      propertyPath: initialPiecesToGenerate
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2499250888481138561, guid: 4ff3849e4d62493438d7de03cc4d3e11,
         type: 3}
       propertyPath: m_RootOrder
