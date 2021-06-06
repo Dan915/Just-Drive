@@ -25,9 +25,15 @@ public class Customization : MonoBehaviour
     public Slider specularSlider, metallicSlider;
     public HorizontalSelector materialSelector;
 
+    [Header("Customization Tab Animation")]
+    public Animator anim;
+    public Slider tabPuller;
+
     void Start()
     {
         StartCoroutine(DoChangeMatt());
+        anim = GetComponent<Animator>();
+        anim.speed = 0;
     }
     IEnumerator DoChangeMatt()
     {
@@ -87,5 +93,11 @@ public class Customization : MonoBehaviour
     public void ChangeMetallic()
     {
         metallic = metallicSlider.value;
+    }
+
+    public void Update()
+    {
+        if(tabPuller.value > 0.15f && tabPuller.value <1)
+        anim.Play("CustomizationAnim", 0, tabPuller.value);
     }
 }
