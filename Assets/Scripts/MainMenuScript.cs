@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering;
+using Michsky.UI.ModernUIPack;
+using UnityEngine.SceneManagement;
 
 public class MainMenuScript : MonoBehaviour
 {
@@ -52,7 +54,8 @@ public class MainMenuScript : MonoBehaviour
     }
     public void Shop()
     {
-        anim.SetTrigger("ShopFlip");
+        //anim.SetTrigger("ShopFlip");
+        SceneManager.LoadScene("Garage");
     }
     IEnumerator Loading()
     {

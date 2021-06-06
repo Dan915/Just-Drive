@@ -369,6 +369,13 @@ public class PlayerController : MonoBehaviour
             ScoreManager.instance.SaveScore();
         }
     }
+
+    public void ChangeCar(GameObject carPrefab)
+    {
+        Destroy(transform.GetChild(0).gameObject);
+        Instantiate(carPrefab, transform.position, transform.rotation, transform);
+        carPrefab.transform.SetAsFirstSibling();
+    }
  
 
 }

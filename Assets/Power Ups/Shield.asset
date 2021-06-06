@@ -17,9 +17,12 @@ MonoBehaviour:
   upgradeDescription:
   - Duration
   - Lives
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: 138796f6771a1ba4c9a72797e7dabeb6, type: 3}
   prefab: {fileID: 9197150454689662534, guid: 692db339c2c945c468f6c2f6ae42e32a, type: 3}
   duration: 15
   strenght: 3
-  Range: 0
+  range: 0
   upgradePrice: 30750000c8af0000
+  durationUpgradeCount: 0
+  strenghtUpgradeCount: 0
+  rangeUpgradeCount: 0

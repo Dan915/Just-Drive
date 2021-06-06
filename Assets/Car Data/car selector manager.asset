@@ -51,11 +51,11 @@ MonoBehaviour:
   modalWindowTitleFont: {fileID: 0}
   modalWindowContentFont: {fileID: 0}
   modalThemeType: 0
-  modalWindowTitleColor: {r: 255, g: 255, b: 255, a: 255}
-  modalWindowDescriptionColor: {r: 255, g: 255, b: 255, a: 255}
-  modalWindowIconColor: {r: 255, g: 255, b: 255, a: 255}
-  modalWindowBackgroundColor: {r: 255, g: 255, b: 255, a: 255}
-  modalWindowContentPanelColor: {r: 255, g: 255, b: 255, a: 255}
+  modalWindowTitleColor: {r: 255, g: 255, b: 255, a: 1}
+  modalWindowDescriptionColor: {r: 255, g: 255, b: 255, a: 1}
+  modalWindowIconColor: {r: 255, g: 255, b: 255, a: 1}
+  modalWindowBackgroundColor: {r: 255, g: 255, b: 255, a: 1}
+  modalWindowContentPanelColor: {r: 255, g: 255, b: 255, a: 1}
   notificationTitleFont: {fileID: 0}
   notificationTitleFontSize: 22.5
   notificationDescriptionFont: {fileID: 0}
